@@ -1,0 +1,95 @@
+{
+  "postTypes" : [
+    {
+      "type": 1,
+      "name": "epaulette"
+    },
+    {
+      "type": 2,
+      "name": "ribbon"
+    }
+  ],
+  "posts": [
+    {
+      "postId": 1,
+      "date": "2019-08-26T19:44:02.865Z",
+      "type": 1
+    },
+    {
+      "postId": 2,
+      "date":  "2019-08-26T20:33:02.865Z",
+      "type": 2
+    }
+  ],
+  "postTags": [
+    {
+      "postId": 1,
+      "tagId": 1
+    },
+    {
+      "postId": 2,
+      "tagId": 1
+    },
+    {
+      "postId": 2,
+      "tagId": 2
+    },
+    {
+      "postId": 3,
+      "tagId": 1
+    },
+    {
+      "postId": 3,
+      "tagId": 3
+    }
+  ],
+  "postContent": [
+    {
+      "postId": 1,
+      "title": "This Is A Test",
+      "content": "We feel good about this test ✨👌"
+    },
+    {
+      "postId": 2,
+      "title": "This Is A Ribbon Test",
+      "content": "Still feelin' good"
+    },
+    {
+      "postId": 3,
+      "title": "Another Good Test",
+      "content": "Tests are the best"
+    }
+  ],
+  "epauletteContent": [
+    {
+      "postId": 1,
+      "externalHostId": 1,
+      "externalPostId": "something"
+    },
+    {
+      "postId": 3,
+      "externalHostId": 1,
+      "externalPostId": "something"
+    }
+  ],
+  "tags": [
+    {
+      "tagId": 1,
+      "name": "good"
+    },
+    {
+      "tagId": 2,
+      "name": "better"
+    },
+    {
+      "tagId": 3,
+      "name": "best"
+    }
+  ],
+  "externalHosts": [
+    {
+      "externalHostId": 1,
+      "name": "tumblr"
+    }
+  ]
+}
