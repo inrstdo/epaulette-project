@@ -1,4 +1,7 @@
 {
+  "author": {
+    "name": "Iron and Rose Studios"
+  },
   "postTypes" : [
     {
       "type": 1,
