@@ -4,11 +4,11 @@
   },
   "postTypes" : [
     {
-      "type": 1,
+      "typeId": 1,
       "name": "epaulette"
     },
     {
-      "type": 2,
+      "typeId": 2,
       "name": "ribbon"
     }
   ],
@@ -16,12 +16,17 @@
     {
       "postId": 1,
       "date": "2019-08-26T19:44:02.865Z",
-      "type": 1
+      "typeId": 1
     },
     {
       "postId": 2,
       "date":  "2019-08-26T20:33:02.865Z",
-      "type": 2
+      "typeId": 2
+    },
+    {
+      "postId": 3,
+      "date": "2019-09-10T07:12:02.865Z",
+      "typeId": 1
     }
   ],
   "postTags": [
