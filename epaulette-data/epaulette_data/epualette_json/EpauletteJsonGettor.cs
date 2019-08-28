@@ -89,6 +89,13 @@ namespace epaulette_data.epaulette_json
       return ConvertSingleObject<Author>(new string[] { "author" });
     }
 
+    public IEnumerable<int> GetAllPostIds()
+    {
+      var postObjects = GetPosts();
+
+      return postObjects.Select(x => x.PostId).ToList();
+    }
+
     public Post GetLatestPost()
     {
       var postObjects = GetPosts();
@@ -107,14 +114,14 @@ namespace epaulette_data.epaulette_json
     {
       var postObjects = GetPosts();
 
-      return postObjects.Where(x => x.Date > date).OrderBy(x => x.Date).First();
+      return postObjects.Where(x => x.Date > date).OrderBy(x => x.Date).FirstOrDefault();
     }
 
     public Post GetPrevPost(DateTime date)
     {
       var postObjects = GetPosts();
 
-      return postObjects.Where(x => x.Date < date).OrderBy(x => x.Date).Last();
+      return postObjects.Where(x => x.Date < date).OrderBy(x => x.Date).LastOrDefault();
     }
 
     public Post GetNextPost(int postId)
@@ -124,10 +131,10 @@ namespace epaulette_data.epaulette_json
 
       if (currentPost == null)
       {
-        throw new InvalidOperationException("Cannot retrieve next post after an invalid postId");
+        throw new ArgumentException("Cannot retrieve next post after an invalid postId");
       }
 
-      return postObjects.Where(x => x.Date > currentPost.Date).OrderBy(x => x.Date).First();
+      return postObjects.Where(x => x.Date > currentPost.Date).OrderBy(x => x.Date).FirstOrDefault();
     }
 
     public Post GetPrevPost(int postId)
@@ -137,10 +144,10 @@ namespace epaulette_data.epaulette_json
 
       if (currentPost == null)
       {
-        throw new InvalidOperationException("Cannot retrieve previous post prior to an invalid postId");
+        throw new ArgumentException("Cannot retrieve previous post prior to an invalid postId");
       }
 
-      return postObjects.Where(x => x.Date < currentPost.Date).OrderBy(x => x.Date).Last();
+      return postObjects.Where(x => x.Date < currentPost.Date).OrderBy(x => x.Date).LastOrDefault();
     }
 
     public Post GetPost(int postId)
@@ -155,7 +162,7 @@ namespace epaulette_data.epaulette_json
 
       if(currentPost == null)
       {
-        throw new InvalidOperationException("Invalid postId");
+        throw new ArgumentException("Invalid postId");
       }
 
       var postTagsObjects = ConvertListOfObjects<PostTag>(new string[] { "postTags" });
@@ -171,7 +178,7 @@ namespace epaulette_data.epaulette_json
 
       if(currentPost == null)
       {
-        throw new InvalidOperationException("Invalid postId");
+        throw new ArgumentException("Invalid postId");
       }
 
       var postContentObjects = ConvertListOfObjects<PostContent>(new string[] { "postContent" });
@@ -185,7 +192,7 @@ namespace epaulette_data.epaulette_json
 
       if(currentPost == null)
       {
-        throw new InvalidOperationException("Invalid postId");
+        throw new ArgumentException("Invalid postId");
       }
 
       var epauletteContentObjects = ConvertListOfObjects<EpauletteContent>(new string[] { "epauletteContent" });

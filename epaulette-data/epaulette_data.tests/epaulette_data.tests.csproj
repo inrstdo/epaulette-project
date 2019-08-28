@@ -16,4 +16,8 @@
     <ProjectReference Include="..\epaulette_data\epaulette-data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="..\flat-file\epaulette-database.json" />
+  </ItemGroup>
+
 </Project>

@@ -16,6 +16,8 @@ namespace epaulette_data.epaulette_interface
 
     Author GetAuthor();
 
+    IEnumerable<int> GetAllPostIds();
+
     Post GetLatestPost();
     Post GetOldestPost();
     Post GetNextPost(DateTime date);
