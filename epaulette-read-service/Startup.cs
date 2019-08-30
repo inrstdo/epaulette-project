@@ -34,6 +34,12 @@ namespace epaulette_read_service
       services.AddSingleton<IEpauletteGettor, EpauletteJsonGettor>();
 
       services.AddControllers();
+
+      services.AddCors(c =>  
+      {  
+        c.AddPolicy("AllowOrigin", options =>
+          options.WithOrigins("http://localhost:7777").AllowAnyHeader().AllowAnyMethod());  
+      });  
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +49,8 @@ namespace epaulette_read_service
       {
         app.UseDeveloperExceptionPage();
       }
+
+      app.UseCors(options=>options.WithOrigins("http://localhost:7777").AllowAnyHeader().AllowAnyMethod()); 
 
       app.UseHttpsRedirection();
 
