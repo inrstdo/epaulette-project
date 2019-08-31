@@ -1,0 +1,31 @@
+@import '../../colors.scss';
+
+.page-container {
+  .blue {
+    background: $e-blue;
+  }
+
+  .header {
+    border-radius: 12px 12px 0px 0px;
+
+    h1 {
+      margin: 0px;
+    }
+  }
+
+  .column {
+    display: inline-block;
+  }
+
+  .column.sidebar {
+    border-radius: 0px 0px 12px 12px;
+    height: 350px;
+    min-width: 50px;
+    width: 25%;
+  }
+
+  .column.center {
+    min-width: 200px;
+    width: 50%;
+  }
+}

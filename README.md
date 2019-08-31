@@ -17,14 +17,14 @@ Necessary steps:
 - npm run start
 
 ## epaulette-data
-This contains the C# definition of all database objects, compiled into a standalone library. To run, you will need: VS Code, DotNet Core 3 SDK, C# Omnisharp extension, Nuget Package Manager extension.
+This contains the C# definition of all database objects, compiled into a standalone library. To run, you will need: VS Code, DotNet Core 3 SDK (currently in preview), C# Omnisharp extension, Nuget Package Manager extension.
 
 Necessary steps:
 - dotnet restore
 - dotnet build
 
 ## epaulette-read-service
-This contains the C# WebApi services responsible for serving up content for the web client to view. To run, you will need: VS Code, DotNet Core 3 SDK, C# Omnisharp extension, Nuget Package Manager extension.
+This contains the C# WebApi services responsible for serving up content for the web client to view. To run, you will need: VS Code, DotNet Core 3 SDK (currently in preview), C# Omnisharp extension, Nuget Package Manager extension.
 
 Necessary steps:
 - dotnet restore
@@ -32,7 +32,7 @@ Necessary steps:
 - dotnet run
 
 ## epaulette-write-service
-This contains the C# WebApi services responsible for consuming content from the web client for eventual viewing. To run, you will need: VS Code, DotNet Core 3 SDK, C# Omnisharp extension, Nuget Package Manager extension.
+This contains the C# WebApi services responsible for consuming content from the web client for eventual viewing. To run, you will need: VS Code, DotNet Core 3 SDK (currently in preview), C# Omnisharp extension, Nuget Package Manager extension.
 
 Necessary steps:
 - dotnet restore
