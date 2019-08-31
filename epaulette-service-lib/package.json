@@ -1,0 +1,34 @@
+{
+  "name": "epaulette-service-lib",
+  "version": "1.0.0",
+  "description": "TypeScript wrapper for Epaulette backend service calls",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inrstdo/epaulette-project.git"
+  },
+  "keywords": [
+    "Epaulette",
+    "TypeScript",
+    "Wrapper",
+    "Webservice"
+  ],
+  "author": "Iron and Rose Studios",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inrstdo/epaulette-project/issues"
+  },
+  "homepage": "https://github.com/inrstdo/epaulette-project#readme",
+  "devDependencies": {
+    "tslint": "^5.19.0",
+    "typescript": "^3.6.2"
+  },
+  "dependencies": {
+    "tslint-config-airbnb": "^5.11.1"
+  }
+}

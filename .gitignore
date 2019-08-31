@@ -29,6 +29,7 @@ epaulette-engine/build/Release
 
 # Dependency directories
 epaulette-engine/node_modules/
+epaulette-service-lib/node_modules/
 
 # Distribution directories
 epaulette-engine/dist/
