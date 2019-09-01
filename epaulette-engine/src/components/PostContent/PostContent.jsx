@@ -1,5 +1,5 @@
 import React from 'react'
-import api from '../../api/read-service-posts'
+import { api } from 'epaulette-service-lib'
 
 class PostContent extends React.Component {
   constructor() {

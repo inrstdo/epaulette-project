@@ -17,6 +17,14 @@ module.exports = {
         ]
       },
       {
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader: 'ts-loader'
+          }
+        ]
+      },
+      {
         test: /\.html$/,
         use: [
           {
@@ -85,7 +93,8 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: ['.js', '.jsx', '.scss']
+    extensions: ['.ts', '.js', '.jsx', '.scss'],
+    modules: ['node_modules']
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
