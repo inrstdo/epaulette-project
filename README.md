@@ -1,10 +1,7 @@
 # epaulette-project
-### Current as of 8/30/2019
+### Current as of 9/01/2019
 
 This repository contains all the code necessary to launch the Epaulette application, including the web client, backend services, and database.
-
-### Note:
-Be sure to clone this repository into the *C:\Build* directory.
 
 A breakdown of the subdirectories follows:
 
@@ -31,10 +28,23 @@ Necessary steps:
 - dotnet build
 - dotnet run
 
+## epaulette-service-lib
+This contains the TypeScript wrapper used to make calls from the web client to the C# WebApi services. To run, you will need: VS Code, Node.js.
+
+Necessary steps:
+- npm i
+- npm run build
+- npm pack
+
 ## epaulette-write-service
-This contains the C# WebApi services responsible for consuming content from the web client for eventual viewing. To run, you will need: VS Code, DotNet Core 3 SDK (currently in preview), C# Omnisharp extension, Nuget Package Manager extension.
+This contains the C# WebApi services responsible for consuming content from the web client editor. To run, you will need: VS Code, DotNet Core 3 SDK (currently in preview), C# Omnisharp extension, Nuget Package Manager extension.
 
 Necessary steps:
 - dotnet restore
 - dotnet build
 - dotnet run
+
+### Notes:
+- Be sure to clone this repository into the *C:\Build* directory.
+- Currently we are not publishing the epaulette-service-lib package. In order to reference this dependency, execute **npm pack** from within the epaulette-service-lib directory to build a local version.
+- For first time setup, it may be necessary to execute **npm link typescript** from within the epaulette-engine directory, in order to successfully reference the epaulette-service-lib dependency.

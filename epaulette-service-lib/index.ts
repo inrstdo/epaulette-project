@@ -1,1 +1,6 @@
-import { Post, api } from './src/read-service/posts'
+import { Post, api } from './src/read-service/posts';
+
+export {
+  Post,
+  api,
+};

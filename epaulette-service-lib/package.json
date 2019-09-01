@@ -2,11 +2,12 @@
   "name": "epaulette-service-lib",
   "version": "1.0.0",
   "description": "TypeScript wrapper for Epaulette backend service calls",
-  "main": "index.js",
+  "main": "./index.js",
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "tslint -c tslint.json '*.ts' 'src/*.ts' 'src/**/*.ts'"
   },
   "repository": {
     "type": "git",

@@ -33,6 +33,7 @@ epaulette-service-lib/node_modules/
 
 # Distribution directories
 epaulette-engine/dist/
+epaulette-service-lib/dist
 epaulette-data/epaulette_data/bin
 epaulette-data/epaulette_data.tests/bin
 epaulette-read-service/bin

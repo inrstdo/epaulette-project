@@ -1,19 +1,17 @@
-const apiUrl = "https://localhost:5001/"
+import fetchData from '../fetchData';
 
 interface Post {
-  postId: Number;
+  postId: number;
   date: Date;
-  typeId: Number;
+  typeId: number;
 }
 
-function fetchData(url : string, options? : object) : Promise<Post> {
-  return fetch(url, options).then(data => data.json());
+function getLatestPost() : Promise<Post> {
+  return fetchData('posts/latest');
 }
 
 const api = {
-  getLatestPost: function() : Promise<Post> {
-    return fetchData(apiUrl + "posts/latest")
-  }
-}
+  getLatestPost,
+};
 
-export { Post, api }
+export { Post, api };
