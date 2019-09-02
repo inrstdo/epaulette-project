@@ -5,6 +5,12 @@ const path = require('path');
 const isDevelopment = process.env.NODE_ENV === 'development'
 
 module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'index_bundle.js',
+    publicPath: '/'
+  },
   module: {
     rules: [
       {
@@ -99,6 +105,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
+    historyApiFallback: true,
     port: 7777
   }
 };

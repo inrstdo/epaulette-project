@@ -6,4 +6,10 @@
   <ItemGroup>
     <ProjectReference Include="..\epaulette-data\epaulette_data\epaulette-data.csproj"/>
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0"/>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.0.1"/>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.0.0-preview8.19405.4"/>
+    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="3.0.0-preview8-28405-07"/>
+  </ItemGroup>
 </Project>

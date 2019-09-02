@@ -1,6 +1,6 @@
 {
   "name": "epaulette-service-lib",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "TypeScript wrapper for Epaulette backend service calls",
   "main": "./index.js",
   "scripts": {

@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using AutoMapper;
 using epaulette_data.epaulette_interface;
 using epaulette_data.epaulette_json;
 
@@ -29,6 +30,7 @@ namespace epaulette_read_service
     {
       // Initialize configuration
       services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+      services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
       // Initialize dependency injection
       services.AddSingleton<IEpauletteGettor, EpauletteJsonGettor>();
