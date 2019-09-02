@@ -32,6 +32,13 @@ class PageContainer extends React.Component
           </div>
           <div className='column center'>
             <Route path='/posts/:postId' component={PostContent} />
+            <Route path='/tags/:search' render={(props) => {
+              return (
+                <div>
+                  {props.match.params.search}
+                </div>
+              )
+            }} />
           </div>
           <div className='column blue sidebar right'>
             Calendar
