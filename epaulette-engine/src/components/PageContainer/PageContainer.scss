@@ -5,7 +5,7 @@
     background: $e-blue;
   }
 
-  .header {
+  .header-container {
     border-radius: 12px 12px 0px 0px;
 
     h1 {
@@ -13,8 +13,8 @@
     }
   }
 
-  .column {
-    display: inline-block;
+  .column-container {
+    display: flex;
   }
 
   .column.sidebar {

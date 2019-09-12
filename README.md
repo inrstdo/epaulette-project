@@ -46,5 +46,4 @@ Necessary steps:
 
 ### Notes:
 - Be sure to clone this repository into the *C:\Build* directory.
-- Currently we are not publishing the epaulette-service-lib package. In order to reference this dependency, execute **npm pack** from within the epaulette-service-lib directory to build a local version.
-- For first time setup, it may be necessary to execute **npm link typescript** from within the epaulette-engine directory, in order to successfully reference the epaulette-service-lib dependency.
+- Currently we are not publishing the epaulette-service-lib package. In order to reference this dependency, execute **npm link** from within the epaulette-service-lib directory to build a local version, and then **npm link epaulette-service-lib** from within the epaulette-engine directory to link the locally build package.
