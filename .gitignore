@@ -70,3 +70,8 @@ epaulette-service-lib/.env
 
 # assets
 *.xcf
+
+# .vscode
+epaulette-data/.vscode
+epaulette-read-service/.vscode
+epaulette-write-service/.vscode

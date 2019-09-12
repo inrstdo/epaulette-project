@@ -14,9 +14,11 @@ namespace epaulette_read_service.Controllers
 {
   [ApiController]
   [Route("[controller]")]
-  public class PostsController : EpauletteControllerBase
+  public class TagsController : EpauletteControllerBase
   {
-    public PostsController(
+    private const int _blurbLength = 50;
+
+    public TagsController(
       IOptions<AppSettings> appSettings,
       IMapper mapper,
       /* ILogger<PostsController> logger, */
@@ -29,44 +31,41 @@ namespace epaulette_read_service.Controllers
     {
     }
 
-    [HttpGet("Latest")]
-    public ActionResult<ViewPostNeighborsModel> GetLatest()
+    [HttpGet("Counts")]
+    public ActionResult<ViewTagCountsModel[]> GetTagCounts()
     {
       _gettor.OpenConnection(_appSettings.StorageConnectionString);
       
-      var current = _gettor.GetLatestPost();
-      var next = _gettor.GetNextPost(current.PostId);
-      var prev = _gettor.GetPrevPost(current.PostId);
+      var tagCounts = _gettor.GetTagCounts();
 
       _gettor.CloseConnection();
 
-      var result = new ViewPostNeighborsModel()
-      {
-        Current = _mapper.Map<Post>(current),
-        Next = _mapper.Map<Post>(next),
-        Prev = _mapper.Map<Post>(prev),
-      };
+      var result = tagCounts.Select(x =>
+        new ViewTagCountsModel()
+        {
+          Tag = _mapper.Map<Tag>(x.Item1),
+          Count = x.Item2
+        }).ToArray();
 
       return result;
     }
 
-    [HttpGet("Post/{postId}")]
-    public ActionResult<ViewPostNeighborsModel> GetPost(int postId)
+    [HttpGet("Search/{tagId}")]
+    public ActionResult<ViewTagSearchModel[]> GetSearch(int tagId)
     {
       _gettor.OpenConnection(_appSettings.StorageConnectionString);
       
-      var current = _gettor.GetPost(postId);
-      var next = _gettor.GetNextPost(current.PostId);
-      var prev = _gettor.GetPrevPost(current.PostId);
+      var tagSearch = _gettor.GetPostsWithTag(tagId);
 
       _gettor.CloseConnection();
 
-      var result = new ViewPostNeighborsModel()
-      {
-        Current = _mapper.Map<Post>(current),
-        Next = _mapper.Map<Post>(next),
-        Prev = _mapper.Map<Post>(prev),
-      };
+      var result = tagSearch.Select(x =>
+        new ViewTagSearchModel()
+        {
+          Post = _mapper.Map<Post>(x.Item1),
+          Title = x.Item2.Title,
+          ContentBlurb = x.Item2.Content.Length > _blurbLength ? $"{x.Item2.Content.Substring(0, 50)} ..." : x.Item2.Content
+        }).ToArray();
 
       return result;
     }

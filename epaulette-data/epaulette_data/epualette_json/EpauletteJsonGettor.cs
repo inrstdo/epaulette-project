@@ -199,5 +199,28 @@ namespace epaulette_data.epaulette_json
 
       return epauletteContentObjects.SingleOrDefault(x => x.PostId == currentPost.PostId);
     }
+
+    public IEnumerable<Tuple<Tag, int>> GetTagCounts(int? maxListSize = null)
+    {
+      var tagObjects = ConvertListOfObjects<Tag>(new string[] { "tags" });
+      var postTagObjects = ConvertListOfObjects<PostTag>(new string[] { "postTags" });
+
+      var tagCountObjects = tagObjects.Select(x => new Tuple<Tag, int>(x, postTagObjects.Count(y => y.TagId == x.TagId))).OrderByDescending(x => x.Item2).ToList();
+
+      return maxListSize.HasValue ? tagCountObjects.Take(maxListSize.Value) : tagCountObjects;
+    }
+
+    public IEnumerable<Tuple<Post, PostContent>> GetPostsWithTag(int tagId)
+    {
+      var postObjects = ConvertListOfObjects<Post>(new string[] { "posts" });
+      var postContentObjects = ConvertListOfObjects<PostContent>(new string[] { "postContent" });
+      var postTagObjects = ConvertListOfObjects<PostTag>(new string[] { "postTags" });
+
+      var relevantPostIds = new HashSet<int>(postTagObjects.Where(x => x.TagId == tagId).Select(x => x.PostId));
+      var relevantPostObjects = postObjects.Where(x => relevantPostIds.Contains(x.PostId)).ToList();
+      var relevantPostContentObjects = postContentObjects.Where(x => relevantPostIds.Contains(x.PostId)).ToList();
+
+      return relevantPostObjects.Join(relevantPostContentObjects, x => x.PostId, y => y.PostId, (x, y) => new Tuple<Post, PostContent>(x, y)).OrderByDescending(x => x.Item1.Date).ToList();
+    }
   }
 }
