@@ -29,6 +29,18 @@ namespace epaulette_read_service.Controllers
     {
     }
 
+    [HttpGet("Count")]
+    public ActionResult<int> GetCount()
+    {
+      _gettor.OpenConnection(_appSettings.StorageConnectionString);
+      
+      var result = _gettor.GetAllPostIds().Count();
+
+      _gettor.CloseConnection();
+
+      return result;
+    }
+
     [HttpGet("Latest")]
     public ActionResult<ViewPostNeighborsModel> GetLatest()
     {

@@ -200,6 +200,13 @@ namespace epaulette_data.epaulette_json
       return epauletteContentObjects.SingleOrDefault(x => x.PostId == currentPost.PostId);
     }
 
+    public Tag GetTagByName(string tagName)
+    {
+      var tagObjects = ConvertListOfObjects<Tag>(new string [] { "tags" });
+
+      return tagObjects.FirstOrDefault(x => x.Name == tagName);
+    }
+
     public IEnumerable<Tuple<Tag, int>> GetTagCounts(int? maxListSize = null)
     {
       var tagObjects = ConvertListOfObjects<Tag>(new string[] { "tags" });

@@ -332,6 +332,16 @@ namespace epaulette_data.tests
     }
 
     [Test]
+    public void Test_GEtTagByName()
+    {
+      testObject.OpenConnection(localFlatFile);
+
+      var testResult = testObject.GetTagByName("good");
+
+      Assert.AreEqual(1, testResult.TagId);
+    }
+
+    [Test]
     public void Test_GetTagCounts1()
     {
       testObject.OpenConnection(localFlatFile);

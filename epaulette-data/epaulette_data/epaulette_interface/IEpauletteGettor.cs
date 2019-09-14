@@ -32,6 +32,7 @@ namespace epaulette_data.epaulette_interface
 
     EpauletteContent GetEpauletteContent(int postId);
 
+    Tag GetTagByName(string tagName);
     IEnumerable<Tuple<Tag, int>> GetTagCounts(int? maxListSize = null);
     IEnumerable<Tuple<Post, PostContent>> GetPostsWithTag(int tagId);
   }

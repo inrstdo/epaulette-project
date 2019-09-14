@@ -1,6 +1,23 @@
-import { Post, api } from './src/read-service/posts';
+import {
+  Post as PostsApiPost,
+  PostNeighbors as PostsApiPostNeighbors,
+  api as PostsApi,
+} from './src/read-service/posts';
+import {
+  Tag as TagsApiTag,
+  Post as TagsApiPost,
+  TagCounts as TagsApiTagCounts,
+  TagSearch as TagsApiTagSearch,
+  api as TagsApi,
+} from './src/read-service/tags';
 
 export {
-  Post,
-  api,
+  PostsApiPost,
+  PostsApiPostNeighbors,
+  PostsApi,
+  TagsApiTag,
+  TagsApiPost,
+  TagsApiTagCounts,
+  TagsApiTagSearch,
+  TagsApi,
 };
