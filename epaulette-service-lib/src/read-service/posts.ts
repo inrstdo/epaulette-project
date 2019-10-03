@@ -12,6 +12,10 @@ interface PostNeighbors {
   prev: Post | null;
 }
 
+function getCount() : Promise<number> {
+  return fetchData('posts/count');
+}
+
 function getLatestPost() : Promise<PostNeighbors> {
   return fetchData('posts/latest');
 }
@@ -21,8 +25,9 @@ function getPost(postId : number) : Promise<PostNeighbors> {
 }
 
 const api = {
+  getCount,
   getLatestPost,
-  getPost
+  getPost,
 };
 
 export { Post, PostNeighbors, api };

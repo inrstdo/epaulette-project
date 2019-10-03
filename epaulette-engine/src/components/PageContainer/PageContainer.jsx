@@ -1,8 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Route, Redirect, withRouter } from 'react-router-dom'
 import './PageContainer.scss'
 import '../PostContent/PostContent'
-import PostContent from '../PostContent/PostContent';
+import PostContent from '../PostContent/PostContent'
+import TagCloud from '../TagCloud/TagCloud'
 
 class PageContainer extends React.Component
 {
@@ -15,7 +17,7 @@ class PageContainer extends React.Component
 
     if (pathname === '/') {
       return (
-        <Redirect to={'/posts/latest'} />
+        <Redirect to={ '/posts/latest' } />
       )
     }
 
@@ -28,17 +30,17 @@ class PageContainer extends React.Component
         </div>
         <div className='column-container'>
           <div className='column blue sidebar left'>
-            Tag Cloud
+            <TagCloud />
           </div>
           <div className='column center'>
-            <Route path='/posts/:postId' component={PostContent} />
-            <Route path='/tags/:search' render={(props) => {
+            <Route component={ PostContent } path='/posts/:postId' />
+            <Route path='/tags/:search' render={ (props) => {
               return (
                 <div>
-                  {props.match.params.search}
+                  { props.match.params.search }
                 </div>
               )
-            }} />
+            } } />
           </div>
           <div className='column blue sidebar right'>
             Calendar
@@ -47,6 +49,12 @@ class PageContainer extends React.Component
       </div>
     )
   }
+}
+
+PageContainer.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired
+  }).isRequired
 }
 
 export default withRouter(PageContainer);

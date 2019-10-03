@@ -1,6 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { api } from 'epaulette-service-lib'
+import { PostsApi } from 'epaulette-service-lib'
 
 const LATEST_POST_ID = 'latest'
 
@@ -44,12 +45,12 @@ class PostContent extends React.Component {
     }
 
     if (postId === LATEST_POST_ID) {
-      api.getLatestPost().then(dataObject => {
+      PostsApi.getLatestPost().then(dataObject => {
         updateState(dataObject)
       })
     }
     else {
-      api.getPost(postId).then(dataObject => {
+      PostsApi.getPost(postId).then(dataObject => {
         updateState(dataObject)
       })
     }
@@ -69,19 +70,27 @@ class PostContent extends React.Component {
     return (
       <div>
         <div>
-        { current.date }
+          { current.date }
         </div>
         <div>
-          {next && <Link to={`/posts/${next.postId}`}>
+          { next && <Link to={ `/posts/${next.postId}` }>
             Next
-          </Link>}
-          {prev && <Link to={`/posts/${prev.postId}`}>
+          </Link> }
+          { prev && <Link to={ `/posts/${prev.postId}` }>
             Prev
-          </Link>}
+          </Link> }
         </div>
       </div>
     )
   }
+}
+
+PostContent.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      postId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
+    }).isRequired
+  }).isRequired
 }
 
 export default PostContent;

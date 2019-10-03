@@ -330,5 +330,54 @@ namespace epaulette_data.tests
       Assert.AreEqual(1, testResult.ExternalHostId);
       Assert.AreEqual("something", testResult.ExternalPostId);
     }
+
+    [Test]
+    public void Test_GEtTagByName()
+    {
+      testObject.OpenConnection(localFlatFile);
+
+      var testResult = testObject.GetTagByName("good");
+
+      Assert.AreEqual(1, testResult.TagId);
+    }
+
+    [Test]
+    public void Test_GetTagCounts1()
+    {
+      testObject.OpenConnection(localFlatFile);
+
+      var testResult = testObject.GetTagCounts();
+
+      Assert.IsTrue(testResult.ElementAt(0).Item1.TagId == 1 && testResult.ElementAt(0).Item2 == 3);
+      Assert.IsTrue(testResult.Skip(1).Any(x => x.Item1.TagId == 2 && x.Item2 == 1));
+      Assert.IsTrue(testResult.Skip(1).Any(x => x.Item1.TagId == 3 && x.Item2 == 1));
+    }
+
+    [Test]
+    public void Test_GetTagCounts2()
+    {
+      var maxListSize = 2;
+
+      testObject.OpenConnection(localFlatFile);
+
+      var testResult = testObject.GetTagCounts(maxListSize);
+
+      Assert.AreEqual(maxListSize, testResult.Count());
+      Assert.AreEqual(3, testResult.ElementAt(0).Item2);
+      Assert.AreEqual(1, testResult.ElementAt(1).Item2);
+    }
+
+    [Test]
+    public void Test_GetPostsWithTag()
+    {
+      testObject.OpenConnection(localFlatFile);
+
+      var testResult = testObject.GetPostsWithTag(1);
+
+      Assert.AreEqual(3, testResult.Count());
+      Assert.AreEqual(3, testResult.ElementAt(0).Item1.PostId);
+      Assert.AreEqual(2, testResult.ElementAt(1).Item1.PostId);
+      Assert.AreEqual(1, testResult.ElementAt(2).Item1.PostId);
+    }
   }
 }

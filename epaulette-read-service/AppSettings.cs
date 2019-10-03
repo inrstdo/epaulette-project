@@ -7,5 +7,11 @@ namespace epaulette_read_service
       get;
       set;
     }
+
+    public int TagSearchContentBlurbLength
+    {
+      get;
+      set;
+    }
   }
 }

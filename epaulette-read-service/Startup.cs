@@ -33,7 +33,7 @@ namespace epaulette_read_service
       services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
       // Initialize dependency injection
-      services.AddSingleton<IEpauletteGettor, EpauletteJsonGettor>();
+      services.AddTransient<IEpauletteGettor, EpauletteJsonGettor>();
 
       services.AddControllers();
 

@@ -7,28 +7,38 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using AutoMapper;
 using epaulette_data.epaulette_interface;
+using epaulette_read_service.Controllers.BaseClass;
 using epaulette_read_service.ViewModel;
 
 namespace epaulette_read_service.Controllers
 {
   [ApiController]
   [Route("[controller]")]
-  public class PostsController : ControllerBase
+  public class PostsController : EpauletteControllerBase
   {
-    private readonly AppSettings _appSettings;
-    private readonly IMapper _mapper;
-    private readonly ILogger<PostsController> _logger;
-    private readonly IEpauletteGettor _gettor;
-
     public PostsController(
       IOptions<AppSettings> appSettings,
       IMapper mapper,
-      /*ILogger<PostsController> logger, */
-      IEpauletteGettor gettor)
+      /* ILogger<PostsController> logger, */
+      IEpauletteGettor gettor) : 
+    base(
+      appSettings,
+      mapper,
+      /* logger, */
+      gettor)
     {
-      _appSettings = appSettings.Value;
-      _mapper = mapper;
-      _gettor = gettor;
+    }
+
+    [HttpGet("Count")]
+    public ActionResult<int> GetCount()
+    {
+      _gettor.OpenConnection(_appSettings.StorageConnectionString);
+      
+      var result = _gettor.GetAllPostIds().Count();
+
+      _gettor.CloseConnection();
+
+      return result;
     }
 
     [HttpGet("Latest")]
